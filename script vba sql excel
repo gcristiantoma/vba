@@ -1,0 +1,24 @@
+Sub simple_Query()
+    Dim cn As ADODB.Connection
+    Dim rs As ADODB.Recordset
+
+    dbpath = "C:\Users\TOMAC01\Desktop\Data cleansing 21.01.2021.xlsx"
+    Set cn = CreateObject("ADODB.Connection")
+    Set rs = CreateObject("ADODB.Recordset")
+    strSQL = "SELECT * FROM [GLOBAL$] where " & """Field Description=""" & """Attribute 9 -> to be changed to Global Customer Type"""
+
+' strSQL = "SELECT * FROM [GLOBAL$] where ""Field Description=""""Attribute 9 -> to be changed to Global Customer Type"""
+
+    Set vNewWB = Workbooks.Add 'or .CopyFromRecordset rs to open workbook
+    connstr = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" & dbpath & ";Extended Properties=""Excel 12.0; HDR=YES; IMEX=1""; Mode=Read;"
+    cn.Open connstr
+    Set rs = cn.Execute(CommandText:=strSQL)
+    vNewWB.Sheets(1).Range("A2").CopyFromRecordset rs
+    For intcolIndex = 0 To rs.Fields.Count - 1
+        Range("A1").Offset(O, intcolIndex).Value = rs.Fields(intcolIndex).Name
+    Next
+    rs.Close
+    cn.Close
+    Set cn = Nothing
+    Set rs = Nothing
+End Sub
