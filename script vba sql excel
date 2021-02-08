@@ -2,10 +2,10 @@ Sub simple_Query()
     Dim cn As ADODB.Connection
     Dim rs As ADODB.Recordset
 
-    dbpath = "C:\Users\TOMAC01\Desktop\Data cleansing 21.01.2021.xlsx"
+    dbpath = "C:\Users\TOMAC01\Desktop\Data cleansing.xlsx"
     Set cn = CreateObject("ADODB.Connection")
     Set rs = CreateObject("ADODB.Recordset")
-    strSQL = "SELECT * FROM [GLOBAL$] where " & """Field Description=""" & """Attribute 9 -> to be changed to Global Customer Type"""
+    strSQL = "SELECT * FROM [GLOBAL$] where " & """Field Description=""" & """to be changed"""
 
      strSQL_AND = "SELECT * FROM [Sheet1$] where Name=" & """mario""" & " and " & "Number=212" & " and Color=" & """red"""
 
