@@ -7,7 +7,7 @@ Sub simple_Query()
     Set rs = CreateObject("ADODB.Recordset")
     strSQL = "SELECT * FROM [GLOBAL$] where " & """Field Description=""" & """Attribute 9 -> to be changed to Global Customer Type"""
 
-' strSQL = "SELECT * FROM [GLOBAL$] where ""Field Description=""""Attribute 9 -> to be changed to Global Customer Type"""
+     strSQL_AND = "SELECT * FROM [Sheet1$] where Name=" & """mario""" & " and " & "Number=212" & " and Color=" & """red"""
 
     Set vNewWB = Workbooks.Add 'or .CopyFromRecordset rs to open workbook
     connstr = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" & dbpath & ";Extended Properties=""Excel 12.0; HDR=YES; IMEX=1""; Mode=Read;"
