@@ -8,6 +8,10 @@ Sub simple_Query()
     strSQL = "SELECT * FROM [GLOBAL$] where " & """Field Description=""" & """to be changed"""
 
      strSQL_AND = "SELECT * FROM [Sheet1$] where Name=" & """mario""" & " and " & "Number=212" & " and Color=" & """red"""
+     
+     ' here we are using column names with spaces combined with and operator
+     strSQL_using_column_spaces = "SELECT * FROM [PHONE$] where " & "[description error]" & "=" & """Phones Standard""" & _
+    "and [number]=" & """002134"""
 
     Set vNewWB = Workbooks.Add 'or .CopyFromRecordset rs to open workbook
     connstr = "Provider=Microsoft.ACE.OLEDB.12.0;Data source=" & dbpath & ";Extended Properties=""Excel 12.0; HDR=YES; IMEX=1""; Mode=Read;"
